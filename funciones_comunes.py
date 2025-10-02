@@ -1,9 +1,3 @@
-"""
-Funciones globales compartidas para todos los ejercicios del proyecto de interfaces gráficas.
-Este archivo contiene las funciones comunes para procesamiento de imágenes, 
-cálculo de momentos, separación de planos, etc.
-"""
-
 import os
 import numpy as np
 import matplotlib.pyplot as plt
