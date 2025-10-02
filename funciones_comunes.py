@@ -331,11 +331,3 @@ def analizar_estadisticas_canales(canal_r: np.ndarray, canal_g: np.ndarray, cana
         print(f"  Valor máximo: {canal.max():3d}")
         print(f"  Promedio:     {canal.mean():.1f}")
         print(f"  Desv. estándar: {canal.std():.1f}")
-
-# ============================================================================
-# METADATOS DEL MÓDULO
-# ============================================================================
-
-__version__ = "1.0.0"
-__author__ = "Proyecto Interfaces Gráficas"
-__description__ = "Funciones globales compartidas para procesamiento de imágenes"
