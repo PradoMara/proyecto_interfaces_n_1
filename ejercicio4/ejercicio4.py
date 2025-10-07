@@ -3,22 +3,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+#carga imagen
 def cargar_imagen(carpeta, archivo):
-    """Carga imagen desde carpeta específica"""
     ruta = os.path.join(os.path.dirname(__file__), carpeta, archivo)
     return Image.open(ruta) if os.path.exists(ruta) else None
 
+#aplicar plantilla
 def aplicar_plantilla(fondo, mujer, forma):
-    """Aplica plantilla con forma sobre imagen de fondo con degradado sutil"""
-    # Redimensionar al tamaño del fondo
     mujer = mujer.resize(fondo.size).convert('RGB')
-    forma = forma.resize(fondo.size).convert('L')  # Escala de grises para máscara
+    forma = forma.resize(fondo.size).convert('L')
     fondo = fondo.convert('RGB')
     
     # Aplicar desenfoque muy sutil a la máscara
     forma_blur = forma.filter(ImageFilter.GaussianBlur(radius=2))
     
-    # Convertir a arrays
     fondo_arr = np.array(fondo, dtype=np.float32)
     mujer_arr = np.array(mujer, dtype=np.float32)
     mascara = np.array(forma_blur, dtype=np.float32) / 255.0
@@ -33,8 +31,9 @@ def aplicar_plantilla(fondo, mujer, forma):
     
     return Image.fromarray(np.clip(resultado, 0, 255).astype(np.uint8))
 
+#main
 def main():
-    # Cargar imagen de la mujer
+    # Cargar imagen de lela
     mujer = cargar_imagen('plantillas', 'pla_00.jpg')
     
     # Crear carpeta resultados
